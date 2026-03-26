@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Syne", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050a0e;
+    color: #dce8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a1628;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3f57;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3d5a73;
+  }
+}
+
+@layer components {
+  /* Page container */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-8;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-pitch-800 border border-neutral-700/50 rounded-xl;
+  }
+
+  /* Gradient text */
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-grass-400 to-grass-300 bg-clip-text text-transparent;
+  }
+
+  /* Glass card */
+  .glass-card {
+    @apply bg-pitch-800/80 backdrop-blur-sm border border-neutral-700/30 rounded-xl;
+  }
+
+  /* Section */
+  .section {
+    @apply py-8;
+  }
+}
+
+@layer utilities {
+  .animate-ticker {
+    animation: ticker 60s linear infinite;
+  }
+
+  .pause-animation:hover .animate-ticker {
+    animation-play-state: paused;
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
