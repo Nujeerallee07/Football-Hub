@@ -7,6 +7,7 @@ import type {
   Match,
   Standing,
   Team,
+  League,
   MatchLineup,
   MatchEvent,
   MatchStatistic,
@@ -19,16 +20,14 @@ import type {
   BookmakerOdds,
 } from "@/types";
 
-const API_KEY = process.env.NEXT_PUBLIC_API_FOOTBALL_KEY!;
+const API_KEY = process.env.API_FOOTBALL_KEY!;
 const BASE_URL =
   process.env.API_FOOTBALL_BASE_URL ?? "https://v3.football.api-sports.io";
 
 // League IDs
 export const LEAGUE_IDS = {
-  PREMIER_LEAGUE: Number(process.env.NEXT_PUBLIC_PREMIER_LEAGUE_ID ?? 39),
-  CHAMPIONS_LEAGUE: Number(
-    process.env.NEXT_PUBLIC_CHAMPIONS_LEAGUE_ID ?? 2
-  ),
+  PREMIER_LEAGUE: Number(process.env.PREMIER_LEAGUE_ID ?? 39),
+  CHAMPIONS_LEAGUE: Number(process.env.CHAMPIONS_LEAGUE_ID ?? 2),
   FA_CUP: 45,
   EFL_CUP: 48,
   EUROPA_LEAGUE: 3,
@@ -38,9 +37,7 @@ export const LEAGUE_IDS = {
   LIGUE_1: 61,
 } as const;
 
-export const CURRENT_SEASON = Number(
-  process.env.NEXT_PUBLIC_CURRENT_SEASON ?? 2024
-);
+export const CURRENT_SEASON = Number(process.env.CURRENT_SEASON ?? 2024);
 
 // ---- Axios Instance ----
 const apiClient: AxiosInstance = axios.create({

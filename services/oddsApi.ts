@@ -4,9 +4,7 @@
 import type { OddsAPIGame, OddsAPIBookmaker, OddsAPIOutcome } from "@/types";
 
 const API_KEY = process.env.ODDS_API_KEY!;
-const BASE_URL =
-  process.env.NEXT_PUBLIC_ODDS_API_BASE_URL ??
-  "https://api.the-odds-api.com/v4";
+const BASE_URL = process.env.ODDS_API_BASE_URL ?? "https://api.the-odds-api.com/v4";
 
 // Sport keys for The Odds API
 export const SPORT_KEYS = {
@@ -45,9 +43,7 @@ async function fetchOddsAPI<T>(
   url.searchParams.set("apiKey", API_KEY);
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
 
-  const res = await fetch(url.toString(), {
-    next: { revalidate: 120 }, // 2 minute cache
-  });
+  const res = await fetch(url.toString());
 
   if (!res.ok) {
     const remaining = res.headers.get("x-requests-remaining");
